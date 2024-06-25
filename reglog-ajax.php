@@ -22,7 +22,7 @@ define('REGLOG_URL', plugin_dir_url(__FILE__));
 define('REGLOG_INC', REGLOG_DIR . 'inc/');
 define('REGLOG_TMP', REGLOG_DIR . 'tmp/');
 
-
+include REGLOG_INC . 'functions.php';
 include REGLOG_INC . 'shortcode.php';
 
 
