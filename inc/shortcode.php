@@ -2,14 +2,16 @@
 
 function reglog_login_ajax_callback($atts, $content = null)
 {
-
+    ob_start();
     include REGLOG_TMP . "user/login.php";
+    return  ob_get_clean();
 }
 
 function reglog_register_ajax_callback($atts, $content = null)
 {
-
+    ob_start();
     include REGLOG_TMP . "user/register.php";
+    return ob_get_clean();
 }
 
 

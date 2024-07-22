@@ -24,6 +24,8 @@ define('REGLOG_TMP', REGLOG_DIR . 'tmp/');
 
 include REGLOG_INC . 'functions.php';
 include REGLOG_INC . 'shortcode.php';
+include REGLOG_INC . 'ajax.php';
+
 
 
 

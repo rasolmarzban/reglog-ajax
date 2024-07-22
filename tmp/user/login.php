@@ -1,20 +1,24 @@
-<div class="reglog-wrapper">
-    <div class="login-wrapper">
-        <form action="">
+ <div class="reglog-wrapper" id="reglog">
+     <div class="login-wrapper">
+         <form method="post" action="post" id="reglog-login">
 
-            <div class="form-row">
-                <label for="userEmail">Email :</label>
-                <input type="text" name="userEmail" id="userEmail" class="reglog-login-input">
-            </div>
-            <div class="form-row">
-                <label for="userPass">Password :</label>
-                <input type="text" name="userPass" id="userPass" class="reglog-login-input">
-            </div>
-            <div class="form-row">
-                <button name="submitLogin" class="reglog-login-btn">LOGIN</button>
-            </div>
+             <h3 id="logo">Log In</h3>
+             <div class="alert" style="display: none;">
+             </div>
 
+             <div class=" reglog-input-container">
+                 <input type="email" id="user-email" name="email" required />
+                 <label for="email">Email</label>
+             </div>
+             <div class="reglog-input-container">
+                 <input type="password" id="user-password" name="password" required />
+                 <label for="password">Password</label>
+             </div>
+             <a class="forgot" href="#">Forgot Password?</a>
+             <a class="register" href="#">Register</a>
 
-        </form>
-    </div>
-</div>
+             <input type="submit" class="button-primary" name="submit" value="Log In" />
+
+         </form>
+     </div>
+ </div>
