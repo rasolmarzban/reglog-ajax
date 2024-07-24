@@ -7,16 +7,16 @@
 
             </div>
             <div class="reglog-input-container">
-                <input type="text" id="username" name="username" required />
+                <input type="text" id="username" name="username" />
                 <label for="username">Username</label>
             </div>
             <div class="reglog-input-container">
-                <input type="email" id="user-email" name="email" required />
-                <label for="email">Email</label>
+                <input type="email" id="useremail" name="user-email" />
+                <label for="user-email">Email</label>
             </div>
             <div class="reglog-input-container">
-                <input type="password" id="user-password" name="password" required />
-                <label for="password">Password</label>
+                <input type="password" id="userpassword" name="user-password" />
+                <label for="user-password">Password</label>
             </div>
             <a class="forgot" href="#">Forgot Password?</a>
             <a class="register" href="#">Login</a>
