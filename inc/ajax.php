@@ -66,30 +66,50 @@ function wp_reglog_validation_email_pass($user_email, $user_password)
 
 function wp_register_reglog_handler()
 {
-    $user_username = sanitize_text_field($_POST['username']);
+    $first_username = sanitize_text_field($_POST['firstname']);
+    $last_username = sanitize_text_field($_POST['lastname']);
     $useremail = sanitize_text_field($_POST['useremail']);
     $userpassword = sanitize_text_field($_POST['userpassword']);
 
-    $validation_register_result = reglog_register_validation($user_username, $useremail, $userpassword);
+    //var_dump($first_username, $last_username, $useremail, $userpassword);
 
-    //var_dump($user_username, $useremail, $userpassword);
+    $validation_register_result = reglog_register_validation($first_username, $last_username, $useremail, $userpassword);
 
+    //check validation
     if (!$validation_register_result['is_valid']) {
-
         wp_send_json([
             'success' => false,
             'message' => $validation_register_result['message']
         ], 422);
     }
+    // if (!$validation_register_result['is_valid']) {
+
+    //     wp_send_json([
+    //         'success' => false,
+    //         'message' => $validation_register_result['message']
+    //     ], 422);
+    // }
+    wp_send_json([
+        'success' => true,
+        'message' => "Your Registered in successfully"
+    ], 200);
+
+    //registeration 
+
+    // $newUser = wp_insert_user([
+    //     'user_login' => apply_filters('pre_user_login', ""),
+    //     'user_pass' => apply_filters('pre_user_password', $userpassword),
+    //     'user_email' => apply_filters('pre_user_email', $useremail)
+    // ]);
 }
 
-function reglog_register_validation($username, $email, $password)
+function reglog_register_validation($firstname, $lastname, $email, $password)
 {
     $result = [
         'is_valid' => true,
         'message' => ""
     ];
-    if (empty($username) || empty($email) || empty($password)) {
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
         $result['is_valid'] = false;
         $result['message'] = "Please check all required fields";
         return $result;
@@ -104,16 +124,16 @@ function reglog_register_validation($username, $email, $password)
         $result['message'] = "The email address already exists";
         return $result;
     }
-    if (strlen($username) < 4 || strlen($username) > 30) {
-        $result['is_valid'] = false;
-        $result['message'] = "the username must be at least 4 characters long and at least 30 characters";
-        return $result;
-    }
-    if (!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[0-9]/', $password) || !preg_match('/[^A-Za-z0-9]/', $password) || strlen($password) < 8) {
-        $result['is_valid'] = false;
-        $result['message'] = "Please enter a valid password\npassword must be at least 8 charecters";
-        return $result;
-    }
+    // if (strlen($firstname) < 3 || strlen($firstname) > 30 || strlen($lastname) < 3 || strlen($lastname) > 30) {
+    //     $result['is_valid'] = false;
+    //     $result['message'] = "Both firstname and lastname must be at least 4 characters long and not exceed 30 characters.";
+    //     return $result;
+    // }
+    // if (!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[0-9]/', $password) || !preg_match('/[^A-Za-z0-9]/', $password) || strlen($password) < 8) {
+    //     $result['is_valid'] = false;
+    //     $result['message'] = "Please enter a valid password\npassword must be at least 8 charecters";
+    //     return $result;
+    // }
 
     return $result;
 }

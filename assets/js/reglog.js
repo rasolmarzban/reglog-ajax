@@ -45,7 +45,8 @@ jQuery(document).ready(function ($) {
 
     $('#reglog-register').on('submit',function (event){
         event.preventDefault();
-        let username = $('#username').val();
+        let firstname = $('#firstname').val();
+        let lastname = $('#lastname').val();
         let useremail = $('#useremail').val();
         let userpassword = $('#userpassword').val();
         let notify = $('.alert');
@@ -55,7 +56,8 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             data:{
                 action:'register_reglog',
-                username: username,
+                firstname: firstname,
+                lastname: lastname,
                 useremail: useremail,
                 userpassword: userpassword
             },
@@ -64,26 +66,26 @@ jQuery(document).ready(function ($) {
                         
                     notify.removeClass('alert_error').addClass('.success-alert');
                     notify.html('<p>'+ response.message +'</p>');
-                    notify.css('display','block');
+                    notify.show(300) 
+                    //notify.css('display','block !important');
                     notify.css('background','#3db53d78');
-                    notify.css('text-align','center');
-                    notify.show(300)  
+                    notify.css('text-align','center'); 
                     setTimeout(function() {
                         window.location.href = 'http://localhost/carvillage';
                     }, 2000);                 
                 } 
             },
             error: function (error){
-               
                 if(error){
+                    console.log(error);
+                    notify.show(300);
                     let message = error.responseJSON.message;
                     notify.addClass('.error-alert');
                     notify.html('<p>'+ message +'</p>');
                     notify.css('display','block',);
-                    notify.show(300)  
                     notify.css('background','#b53d3d78');
                     notify.css('text-align','center');
-                    notify.delay(3000).hide(800);
+                    notify.delay(2000).hide(300);
                 }
             }
         });

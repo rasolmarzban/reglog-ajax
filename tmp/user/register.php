@@ -7,8 +7,12 @@
 
             </div>
             <div class="reglog-input-container">
-                <input type="text" id="username" name="username" />
-                <label for="username">Username</label>
+                <input type="text" id="firstname" name="first-name" />
+                <label for="first-name">First Name</label>
+            </div>
+            <div class="reglog-input-container">
+                <input type="text" id="lastname" name="last-name" />
+                <label for="last-name">Last Name</label>
             </div>
             <div class="reglog-input-container">
                 <input type="email" id="useremail" name="user-email" />
