@@ -1,8 +1,13 @@
- <div class="reglog-wrapper" id="reglog">
+ <div class="reglog-wrapper" id="reglog"
+     style="background-color: 
+     <?php list($r, $g, $b) = sscanf($wp_reglog_options['form-bg-color'], "#%02x%02x%02x"); ?>
+     rgba(<?php echo $r ?>,<?php echo $g ?>,<?php echo $b ?>, <?php echo $wp_reglog_options['form-bg-opacity'] ?>);
+     ">
      <div class="login-wrapper">
          <form method="post" action="post" id="reglog-login">
-
-             <h3 id="logo">Log In</h3>
+             <?php if (isset($wp_reglog_options['login-title'])): ?>
+                 <h3 id="logo"><?php echo $wp_reglog_options['login-title'] ?></h3>
+             <?php endif ?>
              <div class="alert" style="display: none;">
              </div>
 

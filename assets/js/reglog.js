@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
                     notify.css('background','#3db53d78');
                     notify.css('text-align','center'); 
                     setTimeout(function() {
-                        window.location.href = 'http://localhost/carvillage';
+                        window.location.href = 'http://localhost/carvillage/index.php/login';
                     }, 2000);                 
                 } 
             },

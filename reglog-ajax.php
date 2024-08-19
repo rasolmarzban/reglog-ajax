@@ -26,6 +26,8 @@ include REGLOG_INC . 'functions.php';
 include REGLOG_INC . 'shortcode.php';
 include REGLOG_INC . 'ajax.php';
 
+include REGLOG_INC . 'admin/menu.php';
+
 
 
 

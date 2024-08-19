@@ -1,10 +1,10 @@
 <div class="reglog-wrapper" id="reglog">
     <div class="login-wrapper">
         <form method="post" action="" methode="POST" id="reglog-register">
-
-            <h3 id="logo">Register</h3>
+            <?php if (isset($wp_reglog_options['register-title'])): ?>
+                <h3 id="logo"><?php echo $wp_reglog_options['register-title'] ?></h3>
+            <?php endif ?>
             <div class="alert" style="display: none;">
-
             </div>
             <div class="reglog-input-container">
                 <input type="text" id="firstname" name="first-name" />

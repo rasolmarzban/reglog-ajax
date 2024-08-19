@@ -82,25 +82,29 @@ function wp_register_reglog_handler()
             'message' => $validation_register_result['message']
         ], 422);
     }
-    // if (!$validation_register_result['is_valid']) {
-
-    //     wp_send_json([
-    //         'success' => false,
-    //         'message' => $validation_register_result['message']
-    //     ], 422);
-    // }
-    wp_send_json([
-        'success' => true,
-        'message' => "Your Registered in successfully"
-    ], 200);
 
     //registeration 
 
-    // $newUser = wp_insert_user([
-    //     'user_login' => apply_filters('pre_user_login', ""),
-    //     'user_pass' => apply_filters('pre_user_password', $userpassword),
-    //     'user_email' => apply_filters('pre_user_email', $useremail)
-    // ]);
+    $newUser = wp_insert_user([
+        'user_login' => apply_filters('pre_user_login', $useremail[0], rand(1000, 9999)),
+        'user_pass' => apply_filters('pre_user_password', $userpassword),
+        'user_email' => apply_filters('pre_user_email', $useremail),
+        'first_name' => apply_filters('pre_user_first_name', $first_username),
+        'last_name' => apply_filters('pre_user_last_name', $last_username),
+        'display_name' => apply_filters('pre_user_display_name', "{$first_username} {$last_username}")
+    ]);
+
+    if (is_wp_error($newUser)) {
+        wp_send_json([
+            'success' => false,
+            'message' => "There is a problem! Please try again later."
+        ], 500);
+    }
+
+    wp_send_json([
+        'success' => true,
+        'message' => "Your Registered successfully"
+    ], 200);
 }
 
 function reglog_register_validation($firstname, $lastname, $email, $password)
